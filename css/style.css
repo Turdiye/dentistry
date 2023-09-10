@@ -1,0 +1,214 @@
+@import url(./fonts.css);
+@import url(./media.css);
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+}
+.header{
+    background: #343434;
+    color: white;
+    padding: 15px 0;
+    height: 100%;
+}
+.container{
+    max-width: 1220px;
+    margin: 0 auto;
+    padding: 0 15px;
+    width: 100%;
+    height: 100%;
+}
+.header__wrap{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.header__h{
+    font-family: 'Oswald-Bold', sans-serif;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 46px;
+}
+.nav{
+    display: flex;
+    align-items: center;
+}
+.nav__link{
+    border-top: 2px solid transparent;
+    border-bottom: 2px solid transparent;
+    color: white;
+    font-family: 'Oswald-Regular', sans-serif;
+    font-size: 25px;
+    font-weight: 400;
+    line-height: 29px;
+    transition: 0.2s;
+}
+
+.nav__item:hover {
+    border-top: 2px solid white;
+    border-bottom: 2px solid white;
+    padding: 5px 0;
+}
+.main{
+    background: black;
+    color: white;
+    padding: 50px 0 ;
+    height: 100%;
+}
+.main__wrap{
+    display: flex;
+    justify-content: space-around;  
+    align-items: flex-start;
+}
+.main__img{
+    margin-top: auto;
+    margin-bottom: auto;
+}
+.main__i{
+    max-width: 350px;
+    width: 100%;
+}
+.main__text{
+    max-width: 470px;
+    width: 100%;
+}
+.text__h{
+    font-family: 'Oswald-Regular', sans-serif;
+    font-size: 35px;
+    font-weight: 400;
+    line-height: 40px;
+    margin-bottom: 63px;
+    text-transform: uppercase;
+}
+.text__p{
+    font-family: 'Oswald-Regular', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 21px;
+    max-width: 430px;
+    width: 100%;
+    white-space: normal;
+}
+.reviews{
+    background: black;
+    padding: 50px 0;
+    height: 100%;
+}
+.reviews__wrap{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.reviews__item{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+}
+
+.reviews__link{
+    padding: 5px;
+    color: white;
+    font-family: 'Oswald-Bold', sans-serif;
+    font-weight: 700;
+    line-height: 20px;
+    text-transform: uppercase;
+    background: black;
+    border: none;
+    transition: 0.4s;
+    cursor: pointer;
+}
+.reviews__link:hover{
+    background: white;
+    color: black;
+    border-radius: 20px;
+}
+.footer{
+    background: #343434;
+    margin-bottom: 0;
+    height: 100%;
+}
+.footer__wrap{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+}
+.footer__title{
+    margin-bottom: 15px ;
+    color: white;
+}
+.footer__h{
+    font-family: 'Oswald-Regular', sans-serif;
+    font-size: 35px;
+    font-weight: 400;
+    line-height: 40px;
+    text-transform: uppercase;
+}
+.footer__contacts{
+    display: flex;
+    justify-content: space-between;
+}
+.hidden{
+    display: none;
+}
+.comments{
+    display: flex;
+    flex-direction: column;
+    background: black;
+    color: white;
+    max-width: 400px;
+    max-height: 350px;
+    overflow: auto;
+    margin: 30px;
+    cursor: pointer;
+    border-left: 3px solid white;
+    border-right: 3px solid white;
+}
+.com{
+    display: flex;
+    flex-direction: column-reverse;
+}
+.com__item{
+    display: none;
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;    
+    margin: 30px;
+}
+.submit{
+    background: black;
+    color: white;
+    cursor: pointer;
+    padding: 7px;
+    font-family: 'Oswald-Regular', sans-serif;
+    font-weight: 400;
+    line-height: 30px;
+    border: none;
+    transition: 0.4s;
+}
+.submit:hover{
+    background: white;
+    color: black;
+    border-radius: 20px;
+}
+.addcomment{
+    display: flex;
+    gap: 50px;
+    align-items: center;
+}
+::-webkit-scrollbar{
+    width: 0;
+}
+.textarea{
+    border-radius: 9px; 
+    height: 50px; 
+    max-width: 400px;
+}

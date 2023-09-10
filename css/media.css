@@ -1,0 +1,146 @@
+@media screen and (max-width:4000px) {
+    .footer__contacts{
+        gap: 200px;
+    }
+    .nav{
+        gap: 50px;
+    }
+}
+@media screen and (max-width:1024px) {
+    .addcomment{
+        display: flex;
+        flex-direction: column;
+    }
+    .comments{
+        height: 200px;
+    }
+    .footer__contacts{
+        gap: 150px;
+    }
+    .nav{
+        gap: 50px;
+    }
+}
+@media screen and (max-width:768px) {
+    .nav{
+        gap: 50px;
+    }
+    .main__wrap{
+        position: relative;
+    }
+    .main__text{
+        margin-right: 300px;
+    }
+    .main__img{
+       width: 300px;
+       position: absolute;
+       top: 25%;
+       right: 0;
+    }
+    .footer__contacts{
+        gap: 100px;
+    }
+    .text__p{
+        height: 295px;
+        overflow: auto;
+        cursor: all-scroll;
+    }
+
+}
+@media screen and (max-width:555px) {
+    .textarea{
+        width: 300px;
+    }
+    .comments{
+        width: 300px;
+    }
+    .nav{
+        gap: 50px;
+    }
+    .header__wrap{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        gap: 30px;
+    }
+    .footer__contacts{
+        gap: 100px;
+    }
+    .main__img{
+        width: 200px;
+        position: absolute;
+        top: 0;
+        right: 0;
+     }
+     .text__h{
+        width: 100px;
+    }
+    .main__wrap{
+        display: flex;
+        flex-direction: column;
+    }
+}
+@media screen and (max-width:400px) {
+    .main__wrap{
+        display: flex;
+        flex-direction: column;
+        position: relative;
+    }
+    .footer__contacts{
+        gap: 70px;
+    }
+    .footer__h{
+        width: 130px;
+    }
+    .nav{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .main__img{
+        width: 140px;
+        height: 300px;
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+    .main__i{
+        border-bottom-left-radius: 50%;
+        border-bottom-right-radius: 50%;
+    }
+    .main__text{
+        margin: auto 300px auto auto;
+    }
+    .text__h{
+        width: 100px;
+    }
+    .textarea{
+        width: 150px;
+    }
+    .comments{
+        width: 150px;
+    }
+}
+@media screen and (max-width:380px) {
+    .header__h{
+        margin-left: 25%;
+        list-style: circle;
+    }
+}
+@media screen and (max-width:330px) {
+    .header__h{
+        margin-left: 20%;
+    }
+}
+@media screen and (max-width:290px) {
+    .main__img{
+        width: 120px;
+        height: 300px;
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+    .footer__contacts{
+        gap: 50px;
+    }
+}
