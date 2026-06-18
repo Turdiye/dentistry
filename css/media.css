@@ -1,0 +1,85 @@
+
+@media (max-width: 900px) {
+  .works__grid { grid-template-columns: repeat(2, 1fr); }
+  .footer__contacts{
+    gap: 150px;
+  }
+}
+@media (max-width: 560px) {
+  .works__grid { grid-template-columns: 1fr; }
+}
+@media (max-width:600px){
+  .modal-content{ max-width:95vw; max-height:80vh; }
+}
+@media (max-width: 1300px){
+  .header .nav{ display: none !important; }
+  .burger{ display: inline-flex !important; }
+}@media (min-width: 1301px){
+  .header .nav{ display: flex !important; gap: 20px; }
+  .burger{ display: none !important; }
+  .side-menu, .side-menu__overlay{ display: none !important; }
+}
+  @media (max-width: 740px){
+    .pricing{ --pad-y: 40px; }
+    .pricing__title{ font-size: 28px; }
+    .group__title{ font-size: 16px; padding: 12px 14px; }
+    .group__details{ padding: 4px 8px 0; }
+    .line{ gap: 8px; padding: 7px 0; }
+    .line__name, .line__price{ font-size: 15px; }
+    .line__leader{ background-image: repeating-linear-gradient(to right, var(--leader) 0 3px, transparent 3px 8px); }
+  }
+@media (max-width: 480px){
+  .pricing::before{
+    height: 48px;
+    top: -48px;
+    clip-path: polygon(0 100%, 50% 12%, 100% 100%);
+  }
+}
+@media (max-width: 520px){
+  .price-modal__dialog{
+    width: min(96vw, 640px);
+    padding: 16px 14px 12px;
+    border-radius: 14px;
+  }
+  .price-modal__title{ font-size: 20px; }
+}
+@media (max-width: 740px){
+  .line{ gap: 10px; padding: 7px 0; }
+  .line__name, .line__price{ font-size: 15px; }
+  .footer__contacts{
+    gap: 70px;
+  }
+  .line__leader{
+    background-image: repeating-linear-gradient(
+      to right,
+      rgba(255,255,255,.45) 0 4px,
+      transparent 4px 9px
+    );
+    -webkit-mask: linear-gradient(90deg, transparent 0 5px, #000 10px calc(100% - 10px), transparent calc(100% - 5px));
+            mask: linear-gradient(90deg, transparent 0 5px, #000 10px calc(100% - 10px), transparent calc(100% - 5px));
+  }
+}
+@media (max-width: 430px){
+  .line{ gap: 8px; }
+  .line__price{ font-size: 14px; }
+  .footer__contacts{
+    gap: 40px;
+  }
+  .line__leader{
+    background-image: repeating-linear-gradient(
+      to right,
+      rgba(255,255,255,.45) 0 3px,
+      transparent 3px 7px
+    );
+    -webkit-mask: linear-gradient(90deg, transparent 0 4px, #000 8px calc(100% - 8px), transparent calc(100% - 4px));
+            mask: linear-gradient(90deg, transparent 0 4px, #000 8px calc(100% - 8px), transparent calc(100% - 4px));
+  }
+}
+
+  @media screen and (max-width: 768px) {
+  input,
+  select,
+  textarea {
+    font-size: 16px;
+    }
+  }

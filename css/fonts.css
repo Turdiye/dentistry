@@ -1,0 +1,14 @@
+@font-face{
+  font-family: 'MontserratRu';
+  src: url(../fonts/montserrat/MontserratAlternates-Light.ttf) format('truetype');
+  size-adjust: 85%;
+  ascent-override: 85%;
+  descent-override: 15%;
+  line-gap-override: 0%;
+}
+
+
+@font-face{
+  font-family: 'CormorantUz';
+  src: url(../fonts/cormorant/CormorantGaramond-Light.ttf) format('truetype');
+}
