@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Отзывы</title>
+    <link rel="stylesheet" href="./css/style.css?v=8">
+    <link rel="stylesheet" href="./css/price.css?v=8">
+    <link rel="stylesheet" href="./css/about.css?v=8">
+    <link rel="stylesheet" href="./css/works.css?v=8">
+    <link rel="stylesheet" href="./css/questions.css?v=8">
+    <link rel="stylesheet" href="./css/newstyle.css">
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        min-height: 100%;
+      }
+      h2{
+        margin-bottom: 15px;
+        padding: 1rem;
+      }
+      body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+      .reviews-container {
+        padding: 1rem;
+        background: transparent;
+        min-height: 100%;
+      }
+      .reviews-container h2 {
+        margin-top: 0;
+      }
+      .review-form,
+      .review-list {
+        margin: 0;
+      }
+      .review-list{
+        max-height: 500px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        padding: 10px;
+      }
+      .review-list::-webkit-scrollbar{
+        display: none;
+      }
+      .review-form,
+      .review-list{
+        background: rgba(14,22,45,.80);
+        padding: 1rem 1.2rem;
+        border-radius: 12px;
+        margin-bottom: 1rem;
+      }
+      .stars {
+        display: inline-flex;
+        gap: 4px;
+        cursor: pointer;
+      }
+      .star {
+        font-size: 1.6rem;
+        user-select: none;
+        transition: transform 0.15s;
+      }
+      .star.filled {
+        color: #ffb400;
+      }
+      .star:not(.filled) {
+        color: #ccc;
+      }
+      .star:hover {
+        transform: scale(1.1);
+      }
+      textarea {
+        width: 100%;
+        min-height: 100px;
+        resize: vertical;
+        padding: 8px;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+        font-size: 1rem;
+        margin-top: 6px;
+      }
+      .submit-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+      .addbtn {
+        padding: 5px;
+        color: white;
+        font-family: "Oswald-Bold", sans-serif;
+        font-weight: 700;
+        line-height: 20px;
+        text-transform: uppercase;
+        background: black;
+        border: none;
+        transition: 0.4s;
+        cursor: pointer;
+      }
+      .addbtn:hover {
+        background: white;
+        color: black;
+        border-radius: 20px;
+      }
+      .addbtn:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
+      .review-item {
+        border-bottom: 1px solid #e0e0e0;
+        padding: 12px 0;
+      }
+      .review-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+      .review-date {
+        font-size: 0.85rem;
+        color: #666;
+      }
+      .rating-display {
+        margin-bottom: 6px;
+      }
+      .no-reviews {
+        text-align: center;
+        padding: 1rem;
+        color: #555;
+      }
+      .error {
+        color: #b00020;
+        margin-top: 4px;
+        font-size: 0.9rem;
+      }
+      .review-form input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        border-radius: 8px;
+        border: 1px solid #444;
+        background: #1a1d29;
+        color: #fff;
+        font-size: 16px;
+        margin-top: 15px;
+        margin-bottom: 15px;
+        height: 45px;
+        box-sizing: border-box;
+      }
+
+      .review-form input[type="text"]::placeholder {
+        color: #aaa;
+      }
+
+      @media (max-width: 900px) {
+        .footer__contacts{
+        gap: 150px;
+        }
+      }
+      @media (max-width: 740px){
+        .footer__contacts{
+          gap: 70px;
+        }
+      }
+       @media (max-width: 430px){
+        .footer__contacts{
+          gap: 40px;
+        }
+      }
+      .reviews-list{
+  display:grid;
+  gap:16px;
+  margin-top:20px;
+}
+
+.review-card{
+  background:rgba(14,22,45,.95);
+  border:1px solid #1f2740;
+  border-radius:12px;
+  padding:14px 16px;
+  gap: 4px;
+}
+
+.review-head{
+  display:flex;
+  align-items:baseline;
+  gap:10px;
+  margin-bottom:6px;
+}
+.review-label {
+  color: #e7ecff;
+  margin-right: 7px;
+  font-size: 15px;
+}
+.review-name{
+  color:#e7ecff;
+  font-weight:600;
+  font-size:16px;
+}
+.review-date{
+  margin-left:auto;
+  color:#e7ecff;
+  font-size:16px;
+  white-space:nowrap;
+}
+
+.review-rating .stars{
+  color:#ffc640;
+  font-size:18px;
+  letter-spacing:1px;
+}
+.review-text{
+  color:#dbe3ff;
+  white-space:pre-wrap;
+  margin-top:6px;
+  line-height:1.45;
+  font-size: 20px;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width:640px){
+  .review-card{ padding:12px 12px; }
+  .review-name{ font-size:15px; }
+  .review-rating .stars{ font-size:17px; }
+}
+
+.rating {
+  display: inline-flex;
+  gap: 6px;
+  cursor: pointer;
+  margin: 10px 0;
+}
+
+.star {
+  font-size: 20px;
+  color: #444;
+  transition: color 0.2s;
+}
+
+.star.filled {
+  color: #ffc640;
+}
+header, .header {
+  position: sticky; /* или fixed/relative, главное позиционированный */
+  top: 0;           /* если нужен липкий хедер */
+  z-index: 1000;    /* слой выше любых карточек */
+  isolation: isolate; /* собственный stacking context поверх соседей */
+}
+.reviews, .reviews-list, .reviews__item {
+  position: relative; /* чтобы z-index работал, если понадобится */
+  z-index: 1;         /* слой ниже хедера */
+  /* не создаём новых контекстов по приколу */
+  transform: none !important;
+  filter: none !important;
+  perspective: none !important;
+  mix-blend-mode: normal !important;
+  opacity: 1 !important;
+  contain: initial !important;
+  will-change: auto !important;
+}
+.review__name {
+  position: sticky;     /* если нужно поведение липкости */
+  top: 0;
+  z-index: 2;           /* пусть держится над содержимым карточки... */
+}
+
+    </style>
+  </head>
+  <body>
+<header class="header" style="position: fixed; width: 100%; background: rgba(14,22,45,.55)!important; height: 118px;">
+  <div class="container">
+    <div class="header__wrap" style="gap: 30px;">
+      <h1 class="header__h" style="color: #f5efe8 !important;">Dr. Jakhongir Turdiev</h1>
+      <ul class="nav">
+        <li class="nav__item"><a href="index.html" class="nav__link" data-i18n="title_main">Главная</a></li>
+        <li class="nav__item"><a href="index.html#about" class="nav__link" data-i18n="title_about">О себе</a></li>
+        <li class="nav__item"><a href="index.html#works" class="nav__link" data-i18n="title_works">Мои работы</a></li>
+        <li class="nav__item"><a href="reviews.html" class="nav__link" data-i18n="title_reviews">Отзывы</a></li>
+        <li class="nav__item"><a href="index.html#price" class="nav__link" data-i18n="title_price">Цены</a></li>
+        <li class="nav__item"><a href="index.html#enrol" class="nav__link" data-i18n="title_enrol">Записаться</a></li>
+        <li class="nav__item"><a href="index.html#adv" class="nav__link" data-i18n="title_notes">Заметки</a></li>
+        <li class="nav__item"><a href="index.html#contacts" class="nav__link" data-i18n="title_contacts">Контакты</a></li>
+      </ul>
+      <div style="display: flex; gap: 9px;">
+      <div class="header__actions">
+        <div class="lang-switcher">
+          <button class="lang-switcher__btn" type="button" aria-haspopup="listbox" aria-expanded="false" aria-controls="lang-list">
+            <span class="lang-switcher__current" data-lang-current>RU</span>
+            <span class="lang-switcher__chev">▾</span>
+          </button>
+          <ul class="lang-switcher__list" id="lang-list" role="listbox" hidden>
+            <li role="option" data-lang="ru" tabindex="0">Русский</li>
+            <li role="option" data-lang="uz" tabindex="0">O‘zbekcha</li>
+          </ul>
+        </div>
+      </div>
+      <button id="burger" class="burger" aria-label="Меню" type="button" >
+        <img id="burgerIcon" src="./img/bar.svg" alt="menu">
+      </button>
+      </div>
+    </div>
+  </div>
+</header>
+<div id="overlay" class="overlay" hidden></div>
+<nav id="sideMenu" class="side-menu" aria-hidden="true" style="background: rgba(14,22,45,.55)!important;">
+  <ul class="nav nav--side">
+    <li class="nav__item"><a href="index.html" class="nav__link" onclick="closeMenu()" data-i18n="title_main">Главная</a></li>
+    <li class="nav__item"><a href="index.html#about" class="nav__link" onclick="closeMenu()" data-i18n="title_about">О себе</a></li>
+    <li class="nav__item"><a href="index.html#works" class="nav__link" onclick="closeMenu()" data-i18n="title_works">Мои работы</a></li>
+    <li class="nav__item"><a href="reviews.html" class="nav__link" onclick="closeMenu()" data-i18n="title_reviews">Отзывы</a></li>
+    <li class="nav__item"><a href="index.html#price" class="nav__link" onclick="closeMenu()" data-i18n="title_price">Цены</a></li>
+    <li class="nav__item"><a href="index.html#enrol" class="nav__link" onclick="closeMenu()" data-i18n="title_enrol">Записаться</a></li>
+    <li class="nav__item"><a href="index.html#adv" class="nav__link" onclick="closeMenu()" data-i18n="title_notes">Заметки</a></li>
+    <li class="nav__item"><a href="index.html#contacts" class="nav__link" onclick="closeMenu()" data-i18n="title_contacts">Контакты</a></li>
+  </ul>
+</nav>
+<div id="sideMenuOverlay" class="side-menu__overlay" hidden></div>
+
+    <section class="main" style="background: black; margin-top:64px;">
+      <div class="main-container">
+        <div class="reviews-container">
+          <h2 data-i18n="reviews_add_h" style="color: #0d1416 !important;"> Добавить отзыв</h2>
+          
+<form id="review-form" action="/new-dentistry/reviews.php" method="post" novalidate>
+  <div class="review-form" aria-label="Добавить отзыв">
+    <div>
+      <label for="username" data-i18n="reviews_name">Ваше имя</label>
+      <input type="text" id="username" name="username"
+             placeholder="Введите ваше имя"
+             required minlength="2" maxlength="100">
+
+      <label for="review" data-i18n="reviews_p"><strong>Ваш отзыв</strong></label>
+      <textarea id="review" name="review" required minlength="10" placeholder="Введите ваш отзыв..."></textarea>
+    </div>
+
+    <div style="margin: 8px 0">
+      <div data-i18n="reviews_rate"><strong>Рейтинг:</strong></div>
+      <div class="rating" id="starContainer">
+    <input type="hidden" name="rating" id="rating" value="5">
+    <span class="star" data-value="1">★</span>
+    <span class="star" data-value="2">★</span>
+    <span class="star" data-value="3">★</span>
+    <span class="star" data-value="4">★</span>
+    <span class="star" data-value="5">★</span>
+  </div>
+    </div>
+
+    <div class="submit-row">
+      <div class="error" id="formError" aria-live="polite"></div>
+      <button id="submitBtn" class="addbtn" type="submit" data-i18n="reviews_btn">Отправить отзыв</button>
+    </div>
+  </div>
+</form>
+
+<h2 data-i18n="reviews_h" style="color: #0d1416 !important;">Отзывы пациентов</h2>
+        <div class="review-list" aria-label="Список отзывов">
+            <div id="reviewsWrapper">
+              <div id="reviewsList" class="reviews-list"></div> 
+            </div>
+          </div>
+    </section>
+
+    <footer class="footer" id="contacts" style="background: rgba(14,22,45,.55)!important;">
+      <div class="container">
+        <div class="footer__wrap">
+          <div class="footer__title">
+            <h4 class="footer__h" data-i18n="title_contacts">Связаться со мной</h4>
+          </div>
+          <div class="footer__contacts">
+            <a href="https://t.me/doctor_turdiev"
+              ><img src="./img/teleg.svg" alt="" width="50px" height="50px"
+            /></a>
+            <a href="tel:+998(93)511-97-57;"
+              ><img src="./img/phone.png" alt="" width="50px" height="50px"
+            /></a>
+            <a href="https://instagram.com/dr_turdiev?igshid=MzRlODBiNWFlZA=="
+              ><img src="./img/insta.svg" alt="" width="50px" height="50px"
+            /></a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+
+<script>
+
+(function(){
+  function logUse(tag, arg){
+    try {
+      console.log('[Hook]', tag, arg, (new Error('stack')).stack);
+      var b = document.getElementById('__errbox__');
+      if (b) b.textContent += '\n[Hook] ' + tag + ': ' + String(arg);
+    } catch(_){}
+  }
+
+
+  var _Date = Date;
+  Date = function(a){ logUse('Date', a); return new _Date(a); };
+  Date.prototype = _Date.prototype; Date.now = _Date.now; Date.UTC = _Date.UTC; Date.parse = _Date.parse;
+
+
+  var _URL = URL;
+  URL = function(u, base){ logUse('URL', u + (base ? (' base=' + base) : '')); return new _URL(u, base); };
+  URL.prototype = _URL.prototype;
+
+
+  if (window.Intl && Intl.DateTimeFormat) {
+    var _IDTF = Intl.DateTimeFormat;
+    Intl.DateTimeFormat = function(locale, opts){ logUse('Intl.DateTimeFormat', JSON.stringify({locale,opts})); return new _IDTF(locale,opts); };
+    Intl.DateTimeFormat.prototype = _IDTF.prototype;
+  }
+
+
+  if (window.FormData) {
+    var _append = FormData.prototype.append;
+    FormData.prototype.append = function(k,v){ logUse('FormData.append', k + '=' + v); return _append.call(this,k,v); };
+  }
+})();
+</script>
+
+<script src="reviews.js" defer></script>
+<script src="script.js" defer></script>
+<script src="lang.js" defer></script>
+<script>
+ function closeMenu() {
+      sideMenu.classList.remove("active");
+      overlay.classList.remove("active");
+      overlay.addEventListener("transitionend", function onEnd() {
+        overlay.hidden = true;
+        overlay.removeEventListener("transitionend", onEnd);
+      });
+      document.body.classList.remove("body--lock");
+      burgerIcon.src = OPEN_SRC;
+    }
+
+
+
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  var f = document.getElementById('review-form');
+  if (!f) return;
+
+  f.setAttribute('novalidate','novalidate');
+  f.addEventListener('submit', function(e){
+    var name = (f.username && f.username.value || '').trim();
+    var text = (f.review   && f.review.value || '').trim();
+    if (name.length < 2) { e.preventDefault(); alert('Имя слишком короткое'); f.username && f.username.focus(); return; }
+    if (text.length < 10){ e.preventDefault(); alert('Отзыв слишком короткий'); f.review && f.review.focus();   return; }
+
+  });
+});
+</script>
+
+
+
+</body>
+</html>
